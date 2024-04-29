@@ -167,7 +167,7 @@ export const OW_HD_PATH = "m/86'/0'/0'";
 export const RESTORE_WALLETS: { value: RestoreWalletType; name: string; addressTypes: AddressType[] }[] = [
   {
     value: RestoreWalletType.UNISAT,
-    name: 'UniSat Wallet',
+    name: 'Ubox Wallet',
     addressTypes: [
       AddressType.P2WPKH,
       AddressType.P2SH_P2WPKH,
@@ -208,7 +208,8 @@ export const RESTORE_WALLETS: { value: RestoreWalletType; name: string; addressT
 
 export const NETWORK_TYPES = [
   { value: NetworkType.MAINNET, label: 'LIVENET', name: 'livenet', validNames: [0, 'livenet', 'mainnet'] },
-  { value: NetworkType.TESTNET, label: 'TESTNET', name: 'testnet', validNames: ['testnet'] }
+  { value: NetworkType.TESTNET, label: 'TESTNET', name: 'testnet', validNames: ['testnet'] },
+  { value: NetworkType.REGTEST, label: 'REGTEST', name: 'regtest', validNames: ['regtest'] }
 ];
 
 export const MINIMUM_GAS_LIMIT = 21000;
@@ -229,13 +230,14 @@ export const WALLETCONNECT_STATUS_MAP = {
 export const INTERNAL_REQUEST_ORIGIN = 'https://unisat.io';
 
 export const INTERNAL_REQUEST_SESSION = {
-  name: 'UniSat Wallet',
+  name: 'Ubox Wallet',
   origin: INTERNAL_REQUEST_ORIGIN,
   icon: './images/logo/logo@128x.png'
 };
 
 export const OPENAPI_URL_MAINNET = 'https://wallet-api.unisat.io/v5';
 export const OPENAPI_URL_TESTNET = 'https://wallet-api-testnet.unisat.io/v5';
+export const OPENAPI_URL_REGTEST = 'http://localhost:8085/api/v1/wallet';
 
 export const EVENTS = {
   broadcastToUI: 'broadcastToUI',

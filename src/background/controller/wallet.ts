@@ -21,6 +21,7 @@ import {
   NETWORK_TYPES,
   OPENAPI_URL_MAINNET,
   OPENAPI_URL_TESTNET,
+  OPENAPI_URL_REGTEST,
   UNCONFIRMED_HEIGHT
 } from '@/shared/constant';
 import {
@@ -644,8 +645,10 @@ export class WalletController extends BaseController {
     preferenceService.setNetworkType(networkType);
     if (networkType === NetworkType.MAINNET) {
       this.openapi.setHost(OPENAPI_URL_MAINNET);
-    } else {
+    } else if (networkType === NetworkType.TESTNET) {
       this.openapi.setHost(OPENAPI_URL_TESTNET);
+    } else if (networkType === NetworkType.REGTEST) {
+      this.openapi.setHost(OPENAPI_URL_REGTEST);
     }
     const network = this.getNetworkName();
     sessionService.broadcastEvent('networkChanged', {

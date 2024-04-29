@@ -646,13 +646,13 @@ export default function SignPsbt({
           <Column>
             <Text text="Phishing Detection" preset="title-bold" textCenter mt="xxl" />
             <Text text="Malicious behavior and suspicious activity have been detected." mt="md" />
-            <Text text="Your access to this page has been restricted by UniSat Wallet as it might be unsafe." mt="md" />
+            <Text text="Your access to this page has been restricted by Ubox Wallet as it might be unsafe." mt="md" />
           </Column>
         </Content>
 
         <Footer>
           <Row full>
-            <Button text="Reject (blocked by UniSat Wallet)" preset="danger" onClick={handleCancel} full />
+            <Button text="Reject (blocked by Ubox Wallet)" preset="danger" onClick={handleCancel} full />
           </Row>
         </Footer>
       </Layout>

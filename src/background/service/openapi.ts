@@ -1,7 +1,7 @@
 import randomstring from 'randomstring';
 
-import { createPersistStore } from '@/background/utils';
-import { CHANNEL, OPENAPI_URL_MAINNET, OPENAPI_URL_TESTNET, VERSION } from '@/shared/constant';
+import {createPersistStore} from '@/background/utils';
+import {CHANNEL, OPENAPI_URL_MAINNET, OPENAPI_URL_TESTNET, OPENAPI_URL_REGTEST, VERSION} from '@/shared/constant';
 import {
   AddressRunesTokenSummary,
   AddressSummary,
@@ -24,7 +24,7 @@ import {
   WalletConfig
 } from '@/shared/types';
 
-import { preferenceService } from '.';
+import {preferenceService} from '.';
 
 interface OpenApiStore {
   host: string;
@@ -45,6 +45,7 @@ export class OpenApiService {
   addressFlag = 0;
 
   setHost = async (host: string) => {
+    console.log(`host=${host}`)
     this.store.host = host;
     await this.init();
   };
@@ -66,8 +67,10 @@ export class OpenApiService {
       const networkType = preferenceService.getNetworkType();
       if (networkType === NetworkType.MAINNET) {
         this.store.host = OPENAPI_URL_MAINNET;
-      } else {
+      } else if (networkType === NetworkType.TESTNET) {
         this.store.host = OPENAPI_URL_TESTNET;
+      } else if (networkType === NetworkType.REGTEST) {
+        this.store.host = OPENAPI_URL_REGTEST;
       }
     }
 
@@ -124,7 +127,7 @@ export class OpenApiService {
       c++;
     }
     const headers = new Headers();
-    headers.append('X-Client', 'UniSat Wallet');
+    headers.append('X-Client', 'Ubox Wallet');
     headers.append('X-Version', VERSION);
     headers.append('x-address', this.clientAddress);
     headers.append('x-flag', this.addressFlag + '');
@@ -143,7 +146,7 @@ export class OpenApiService {
   httpPost = async (route: string, params: any) => {
     const url = this.getHost() + route;
     const headers = new Headers();
-    headers.append('X-Client', 'UniSat Wallet');
+    headers.append('X-Client', 'Ubox Wallet');
     headers.append('X-Version', VERSION);
     headers.append('x-address', this.clientAddress);
     headers.append('x-flag', this.addressFlag + '');

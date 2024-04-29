@@ -72,6 +72,8 @@ class ProviderController extends BaseController {
       req.data.params.networkType = NetworkType.MAINNET
     } else if ( NETWORK_TYPES[NetworkType.TESTNET].validNames.includes(network)) {
       req.data.params.networkType = NetworkType.TESTNET
+    }else if ( NETWORK_TYPES[NetworkType.REGTEST].validNames.includes(network)) {
+      req.data.params.networkType = NetworkType.REGTEST
     } else {
       throw new Error(`the network is invalid, supported networks: ${NETWORK_TYPES.map(v=>v.name).join(',')}`)
     }
